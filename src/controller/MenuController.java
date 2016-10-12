@@ -15,7 +15,7 @@ public class MenuController {
     private final MenuModel model;
     private final MenuView view;
     private final Stage stage;
-    private final Scene scene;
+    private Scene scene;
 
     public MenuController(Stage stage, Scene scene,
                           MenuModel model, MenuView view) {
@@ -31,8 +31,9 @@ public class MenuController {
         System.out.println("pvp");
         WorldModel wModel = new WorldModel();
         WorldView wView = new WorldView(wModel);
+        scene = new Scene(wView);
+        stage.setScene(scene);
         WorldController w = new WorldController(stage, scene, wModel, wView);
-        stage.setScene(new Scene(wView));
     }
 
     public void handleExitEvent() {
