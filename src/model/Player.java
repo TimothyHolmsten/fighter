@@ -4,7 +4,6 @@ package model;
  * Created by timothy on 2016-10-11.
  */
 public class Player {
-    public static final double BILLION = 1_000_000_000.0;
     private double x, y;
     private double dx, dy;
 
@@ -34,7 +33,7 @@ public class Player {
     }
 
     public void move(long elapsedTimeNs) {
-        x += dx * elapsedTimeNs / BILLION;
+        x += dx * elapsedTimeNs / 1_000_000_000.0;
 
         if(dx != 0)
             if(dx < 0)
