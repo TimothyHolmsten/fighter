@@ -33,7 +33,7 @@ public class MenuController {
         WorldView wView = new WorldView(wModel);
         scene = new Scene(wView);
         stage.setScene(scene);
-        WorldController w = new WorldController(stage, scene, wModel, wView);
+        WorldController worldController = new WorldController(stage, scene, wModel, wView);
     }
 
     public void handleExitEvent() {
