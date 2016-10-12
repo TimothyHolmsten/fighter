@@ -10,6 +10,7 @@ import javafx.scene.control.MenuBar;
 import model.WorldModel;
 import view.WorldView;
 import controller.WorldController;
+import model.Player;
 
 public class FighterMenuBar extends MenuBar {
     public FighterMenuBar(Stage stage) {
@@ -19,7 +20,7 @@ public class FighterMenuBar extends MenuBar {
         MIPvP.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                WorldModel wModel = new WorldModel();
+                WorldModel wModel = new WorldModel(new Player(0, 50), new Player(50, 50));
                 WorldView wView = new WorldView(stage, wModel);
                 Scene scene = new Scene(wView);
                 stage.setScene(scene);
