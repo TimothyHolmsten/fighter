@@ -53,5 +53,6 @@ public class WorldView extends BorderPane {
 
     public void updateView() {
         player1.setX(model.getPlayer1().getX());
+        player2.setX(model.getPlayer2().getX());
     }
 }

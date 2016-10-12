@@ -44,10 +44,15 @@ public class WorldController {
                 if(event.getCode() == KeyCode.ESCAPE)
                     handleEscEvent();
 
-                if(event.getCode() == KeyCode.A)
+                if (event.getCode() == KeyCode.A) {
                     model.getPlayer1().walk(-100);
-                if(event.getCode() == KeyCode.D)
+                } else if (event.getCode() == KeyCode.D) {
                     model.getPlayer1().walk(100);
+                } else if (event.getCode() == KeyCode.LEFT) {
+                    model.getPlayer2().walk(-100);
+                } else if (event.getCode() == KeyCode.RIGHT) {
+                    model.getPlayer2().walk(100);
+                }
             }
         });
     }
@@ -69,6 +74,7 @@ public class WorldController {
 
 
             model.getPlayer1().move(now - previous);
+            model.getPlayer2().move(now - previous);
             view.updateView();
 
             previous = now;
