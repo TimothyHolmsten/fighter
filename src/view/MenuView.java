@@ -42,7 +42,6 @@ public class MenuView extends GridPane {
     }
 
     public void addEventHandlers(MenuController controller) {
-
         pvpButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -57,5 +56,4 @@ public class MenuView extends GridPane {
             }
         });
     }
-
 }

@@ -16,10 +16,11 @@ public class FighterGame extends Application {
     public void start(Stage primaryStage) {
         MenuModel menuModel = new MenuModel();
         MenuView menuView = new MenuView(menuModel);
-        MenuController menuController = new MenuController(primaryStage, menuModel, menuView);
+        Scene scene = new Scene(menuView);
+        MenuController menuController = new MenuController(primaryStage, scene,
+                                                           menuModel, menuView);
         menuView.addEventHandlers(menuController);
 
-        Scene scene = new Scene(menuView);
         primaryStage.setScene(scene);
         primaryStage.setWidth(500);
         primaryStage.setHeight(500);
