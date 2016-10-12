@@ -14,7 +14,7 @@ public class FighterGame extends Application {
     @Override
     public void start(Stage primaryStage) {
         MenuModel menuModel = new MenuModel();
-        MenuView menuView = new MenuView(menuModel);
+        MenuView menuView = new MenuView(primaryStage, menuModel);
         Scene scene = new Scene(menuView);
         MenuController menuController = new MenuController(primaryStage, scene,
                                                            menuModel, menuView);

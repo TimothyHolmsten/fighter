@@ -3,6 +3,7 @@ package view;
 import controller.MenuController;
 import controller.WorldController;
 import javafx.event.EventHandler;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -19,20 +20,22 @@ import model.WorldModel;
  */
 public class WorldView extends BorderPane {
     private final WorldModel model;
+    private Stage stage;
     private Scene scene;
     private final AnchorPane anchorPane;
     private ImageView player1;
     private ImageView player2;
 
-    public WorldView(WorldModel model) {
+    public WorldView(Stage stage, WorldModel model) {
         this.model = model;
+        this.stage = stage;
         anchorPane = new AnchorPane();
         setCenter(anchorPane);
         initView();
     }
 
     private void initView() {
-        FighterMenuBar fmb = new FighterMenuBar();
+        FighterMenuBar fmb = new FighterMenuBar(stage);
         setTop(fmb);
 
         player1 = new ImageView();

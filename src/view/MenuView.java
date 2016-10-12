@@ -1,5 +1,6 @@
 package view;
 
+import javafx.stage.Stage;
 import controller.MenuController;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -17,9 +18,11 @@ public class MenuView extends BorderPane {
     private final MenuModel model;
     private GridPane gridPane;
     private Button pvpButton, pvAiButton, exitButton;
+    private Stage stage;
 
-    public MenuView(MenuModel model) {
+    public MenuView(Stage stage, MenuModel model) {
         this.model = model;
+        this.stage = stage;
         initView();
     }
 
@@ -30,7 +33,7 @@ public class MenuView extends BorderPane {
         gridPane.setAlignment(Pos.CENTER);
         setCenter(gridPane);
 
-        setTop(new FighterMenuBar());
+        setTop(new FighterMenuBar(stage));
 
         pvpButton = new Button("Player vs Player");
         pvAiButton = new Button("Player vs AI");
