@@ -54,7 +54,7 @@ public class WorldController {
 
     private void handleEscEvent() {
         MenuModel mModel = new MenuModel();
-        MenuView mView = new MenuView(mModel);
+        MenuView mView = new MenuView(stage, mModel);
         scene = new Scene(mView);
         stage.setScene(scene);
         MenuController menuController = new MenuController(stage, scene, mModel, mView);
