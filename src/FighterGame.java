@@ -24,6 +24,7 @@ public class FighterGame extends Application {
         primaryStage.setScene(scene);
         primaryStage.setWidth(500);
         primaryStage.setHeight(500);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }

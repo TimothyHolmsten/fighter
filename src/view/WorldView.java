@@ -11,12 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import model.WorldModel;
 
 /**
  * Created by timothy on 2016-10-11.
  */
-public class WorldView extends AnchorPane {
+public class WorldView extends Pane {
     private final WorldModel model;
     private Scene scene;
 
@@ -33,15 +34,19 @@ public class WorldView extends AnchorPane {
         player1 = new ImageView();
         Image p1img = new Image("file:images/player.png", 32, 32, true, false);
         player1.setImage(p1img);
-        this.setBottomAnchor(player1, 32.0);
-        this.setLeftAnchor(player1, 32.0);
+        //this.setBottomAnchor(player1, model.getPlayer1().getY());
+        //this.setLeftAnchor(player1, model.getPlayer1().getX());
+        player1.setX(model.getPlayer1().getX());
+        player1.setY(model.getPlayer1().getY());
         this.getChildren().add(player1);
 
         player2 = new ImageView();
         Image p2img = new Image("file:images/player.png", 32, 32, true, false);
         player2.setImage(p2img);
-        this.setBottomAnchor(player2, 32.0);
-        this.setLeftAnchor(player2, 100.0);
         this.getChildren().add(player2);
+    }
+
+    public void updateView() {
+        player1.setX(model.getPlayer1().getX());
     }
 }

@@ -40,6 +40,13 @@ public class WorldController {
 
                 if(event.getCode() == KeyCode.ESCAPE)
                     handleEscEvent();
+
+                if(event.getCode() == KeyCode.A)
+                    model.getPlayer1().walk(-32);
+                if(event.getCode() == KeyCode.D)
+                    model.getPlayer1().walk(32);
+
+                view.updateView();
             }
         });
     }
