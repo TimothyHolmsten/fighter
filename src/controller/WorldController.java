@@ -133,11 +133,13 @@ public class WorldController {
                 double p2Speed = p2.getSpeed();
                 if (p1Speed > 10 || p2Speed > 10) {
                     if (p1.onTopOfPlayer(p2) && p1.getDy() > p2.getDy()) {
+                        p1.addScore(1);
                         System.out.println("Player 1 wins!");
                         p1.jump(1000);
                     }
 
                     else if (p2.onTopOfPlayer(p1) && p2.getDy() > p1.getDy()) {
+                        p2.addScore(1);
                         System.out.println("Player 2 wins!");
                         p2.jump(1000);
                     }

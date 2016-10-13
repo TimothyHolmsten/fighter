@@ -14,7 +14,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.Label;
 import model.WorldModel;
+import model.Player;
 
 /**
  * Created by timothy on 2016-10-11.
@@ -24,6 +26,10 @@ public class WorldView extends BorderPane {
     private Stage stage;
     private ImageView player1;
     private ImageView player2;
+    private int p1Score = -1;
+    private Label p1ScoreLabel;
+    private int p2Score = -1;
+    private Label p2ScoreLabel;
 
     public WorldView(Stage stage, WorldModel model) {
         this.model = model;
@@ -52,11 +58,28 @@ public class WorldView extends BorderPane {
     }
 
     public void updateView() {
-        player1.setX(model.getPlayer1().getX());
-        player1.setY(model.getPlayer1().getY());
+        Player p1 = model.getPlayer1();
+        Player p2 = model.getPlayer2();
 
-        player2.setX(model.getPlayer2().getX());
-        player2.setY(model.getPlayer2().getY());
+        player1.setX(p1.getX());
+        player1.setY(p1.getY());
 
+        player2.setX(p2.getX());
+        player2.setY(p2.getY());
+
+        if (p1.getScore() != p1Score) {
+            p1ScoreLabel = new Label("Player 1: " + p1.getScore());
+            p1ScoreLabel.setLayoutX(50);
+            p1ScoreLabel.setLayoutY(50);
+            getChildren().add(p1ScoreLabel);
+            p1Score = p1.getScore();
+        }
+        if (p2.getScore() != p2Score) {
+            p2ScoreLabel = new Label("Player 2: " + p2.getScore());
+            p2ScoreLabel.setLayoutX(50);
+            p2ScoreLabel.setLayoutY(100);
+            getChildren().add(p2ScoreLabel);
+            p2Score = p2.getScore();
+        }
     }
 }
