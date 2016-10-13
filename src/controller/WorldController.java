@@ -124,7 +124,7 @@ public class WorldController {
             for (Player p : model.getPlayers()) {
                 p.move(now - previous);
                 p.gravity(now - previous);
-                p.constrain(stage.getWidth(), stage.getHeight(), 32, 32);
+                p.constrain(stage.getWidth(), stage.getHeight());
             }
 
             if (Math.abs(p1.getX() - p2.getX()) < 16
@@ -132,8 +132,10 @@ public class WorldController {
                 double p1Speed = p1.getSpeed();
                 double p2Speed = p2.getSpeed();
                 if (p1Speed > 10 || p2Speed > 10) {
-                    if (p1.onTopOfPlayer(p2) && p1.getDy() > p2.getDy())
+                    if (p1.onTopOfPlayer(p2) && p1.getDy() > p2.getDy()) {
                         System.out.println("Player 1 wins!");
+                        p1.jump(1000);
+                    }
 
                     else if (p2.onTopOfPlayer(p1) && p2.getDy() > p1.getDy()) {
                         System.out.println("Player 2 wins!");

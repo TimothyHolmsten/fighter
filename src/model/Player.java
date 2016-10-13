@@ -63,7 +63,7 @@ public class Player {
         dy += 900 * elapsedTimeNs / 1_000_000_000.0;
     }
 
-    public void constrain(double boxX, double boxY, double width, double height) {
+    public void constrain(double boxX, double boxY) {
         if (x > boxX - width)
             x = boxX - width;
         else if (x < 0)
