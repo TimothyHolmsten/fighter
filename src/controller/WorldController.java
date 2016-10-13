@@ -138,6 +138,8 @@ public class WorldController {
                     }
                 }
             }
+            if(p1.onTopOfPlayer(p2))
+                System.out.println("YAY");
 
             view.updateView();
 

@@ -73,4 +73,13 @@ public class Player {
             y = boxY - height * 2;
         }
     }
+
+    public boolean onTopOfPlayer(Player otherPlayer) {
+        if (x > otherPlayer.getX() - 32 &&
+                x < otherPlayer.getX() + 32 &&
+                y > otherPlayer.getY() - 16 &&
+                y < otherPlayer.getY())
+            return true;
+        return false;
+    }
 }
