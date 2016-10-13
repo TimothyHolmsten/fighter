@@ -52,6 +52,13 @@ public class MenuView extends BorderPane {
             }
         });
 
+        pvAiButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                controller.handlePvAIEvent();
+            }
+        });
+
         exitButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

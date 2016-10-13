@@ -5,9 +5,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import model.MenuModel;
-import model.Player;
-import model.WorldModel;
+import model.*;
 import view.MenuView;
 import view.WorldView;
 import javafx.event.EventHandler;
@@ -48,32 +46,37 @@ public class WorldController {
                     case ESCAPE:
                         handleEscEvent();
                         break;
-                    case A:
-                        model.getPlayer1().walk(-100);
-                        break;
-                    case D:
-                        model.getPlayer1().walk(100);
-                        break;
-                    case W:
-                        model.getPlayer1().jump(300);
-                        break;
-                    case S:
-                        model.getPlayer1().attack(500);
-                        break;
-
-                    case LEFT:
-                        model.getPlayer2().walk(-100);
-                        break;
-                    case RIGHT:
-                        model.getPlayer2().walk(100);
-                        break;
-                    case UP:
-                        model.getPlayer2().jump(300);
-                        break;
-                    case DOWN:
-                        model.getPlayer2().attack(500);
-
                 }
+                if (!(model.getPlayer1() instanceof AI))
+                    switch (event.getCode()) {
+                        case A:
+                            model.getPlayer1().walk(-100);
+                            break;
+                        case D:
+                            model.getPlayer1().walk(100);
+                            break;
+                        case W:
+                            model.getPlayer1().jump(300);
+                            break;
+                        case S:
+                            model.getPlayer1().attack(500);
+                            break;
+                    }
+                if (!(model.getPlayer2() instanceof AI))
+                    switch (event.getCode()) {
+                        case LEFT:
+                            model.getPlayer2().walk(-100);
+                            break;
+                        case RIGHT:
+                            model.getPlayer2().walk(100);
+                            break;
+                        case UP:
+                            model.getPlayer2().jump(300);
+                            break;
+                        case DOWN:
+                            model.getPlayer2().attack(500);
+
+                    }
             }
         });
         scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
@@ -81,25 +84,29 @@ public class WorldController {
             public void handle(KeyEvent e) {
                 Player p1 = model.getPlayer1();
                 Player p2 = model.getPlayer2();
-                switch (e.getCode()) {
-                    case A:
-                        if (p1.getDx() < 0)
-                            p1.walk(0);
-                        break;
-                    case D:
-                        if (p1.getDx() > 0)
-                            p1.walk(0);
-                        break;
-                    case LEFT:
-                        if (p2.getDx() < 0)
-                            p2.walk(0);
-                        break;
-                    case RIGHT:
-                        if (p2.getDx() > 0)
-                            p2.walk(0);
-                        break;
+                if (!(p1 instanceof AI))
+                    switch (e.getCode()) {
+                        case A:
+                            if (p1.getDx() < 0)
+                                p1.walk(0);
+                            break;
+                        case D:
+                            if (p1.getDx() > 0)
+                                p1.walk(0);
+                            break;
+                    }
+                if (!(p2 instanceof AI))
+                    switch (e.getCode()) {
+                        case LEFT:
+                            if (p2.getDx() < 0)
+                                p2.walk(0);
+                            break;
+                        case RIGHT:
+                            if (p2.getDx() > 0)
+                                p2.walk(0);
+                            break;
 
-                }
+                    }
             }
         });
     }
@@ -125,6 +132,8 @@ public class WorldController {
                 p.move(now - previous);
                 p.gravity(now - previous);
                 p.constrain(stage.getWidth(), stage.getHeight());
+                if (p instanceof AI)
+                    ((AI) p).think();
             }
 
             if (Math.abs(p1.getX() - p2.getX()) < 16
@@ -136,9 +145,7 @@ public class WorldController {
                         p1.addScore(1);
                         System.out.println("Player 1 wins!");
                         p1.jump(1000);
-                    }
-
-                    else if (p2.onTopOfPlayer(p1) && p2.getDy() > p1.getDy()) {
+                    } else if (p2.onTopOfPlayer(p1) && p2.getDy() > p1.getDy()) {
                         p2.addScore(1);
                         System.out.println("Player 2 wins!");
                         p2.jump(1000);

@@ -7,6 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.AI;
 import model.MenuModel;
 import model.Player;
 import model.WorldModel;
@@ -46,5 +47,17 @@ public class MenuController {
 
     public void handleExitEvent() {
         stage.close();
+    }
+
+    public void handlePvAIEvent() {
+        System.out.println("PvAI");
+
+        Player realPlayer = new Player(0,50,32,32);
+
+        WorldModel wModel = new WorldModel(realPlayer, new AI(50,50,32,32,realPlayer));
+        WorldView wView = new WorldView(stage, wModel);
+        scene = new Scene(wView);
+        stage.setScene(scene);
+        WorldController worldController = new WorldController(stage, scene, wModel, wView);
     }
 }
