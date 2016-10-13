@@ -7,6 +7,9 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.MenuBar;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Label;
+import javafx.geometry.Insets;
 import model.WorldModel;
 import view.WorldView;
 import controller.WorldController;
@@ -46,6 +49,21 @@ public class FighterMenuBar extends MenuBar {
 
         Menu helpMenu = new Menu("Help");
         MenuItem MIHow = new MenuItem("How to play");
+        MIHow.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                Stage stage = new Stage();
+                BorderPane root = new BorderPane();
+                String htpText = "How to play:\n\n"
+                    + "1. Win!";
+                Label text = new Label(htpText);
+                text.setPadding(new Insets(10));
+                root.setCenter(text);
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
         helpMenu.getItems().addAll(MIHow);
 
         getMenus().addAll(gameMenu, helpMenu);
