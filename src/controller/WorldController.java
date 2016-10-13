@@ -42,7 +42,6 @@ public class WorldController {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println(event.getText());
 
                 switch (event.getCode()) {
 
