@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
 import model.Player;
+
 import java.lang.Math;
 
 /**
@@ -81,22 +82,22 @@ public class WorldController {
                 Player p1 = model.getPlayer1();
                 Player p2 = model.getPlayer2();
                 switch (e.getCode()) {
-                case A:
-                    if (p1.getDx() < 0)
-                        p1.walk(0);
-                    break;
-                case D:
-                    if (p1.getDx() > 0)
-                        p1.walk(0);
-                    break;
-                case LEFT:
-                    if (p2.getDx() < 0)
-                        p2.walk(0);
-                    break;
-                case RIGHT:
-                    if (p2.getDx() > 0)
-                        p2.walk(0);
-                    break;
+                    case A:
+                        if (p1.getDx() < 0)
+                            p1.walk(0);
+                        break;
+                    case D:
+                        if (p1.getDx() > 0)
+                            p1.walk(0);
+                        break;
+                    case LEFT:
+                        if (p2.getDx() < 0)
+                            p2.walk(0);
+                        break;
+                    case RIGHT:
+                        if (p2.getDx() > 0)
+                            p2.walk(0);
+                        break;
 
                 }
             }
@@ -120,25 +121,23 @@ public class WorldController {
             Player p1 = model.getPlayer1();
             Player p2 = model.getPlayer2();
 
-            for(Player p: model.getPlayers()) {
-                p.move(now-previous);
-                p.gravity(now-previous);
+            for (Player p : model.getPlayers()) {
+                p.move(now - previous);
+                p.gravity(now - previous);
                 p.constrain(stage.getWidth(), stage.getHeight(), 32, 32);
             }
 
             if (Math.abs(p1.getX() - p2.getX()) < 16
-                && Math.abs(p1.getY() - p2.getY()) < 32) {
+                    && Math.abs(p1.getY() - p2.getY()) < 32) {
                 double p1Speed = p1.getSpeed();
                 double p2Speed = p2.getSpeed();
                 if (p1Speed > 10 || p2Speed > 10) {
-                    if (Math.abs(p1.getY() - p2.getY()) > 16
-                        && p1.getDy() > p2.getDy()
-                        && p1.getY() < p2.getY()) {
+                    if (p1.onTopOfPlayer(p2) && p1.getDy() > p2.getDy())
                         System.out.println("Player 1 wins!");
-                    } else if (Math.abs(p1.getY() - p2.getY()) > 16
-                               && p2.getDy() > p1.getDy()
-                               && p2.getY() < p1.getY()) {
+
+                    else if (p2.onTopOfPlayer(p1) && p2.getDy() > p1.getDy()) {
                         System.out.println("Player 2 wins!");
+                        p2.jump(1000);
                     }
                 }
             }

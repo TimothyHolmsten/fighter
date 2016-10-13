@@ -1,20 +1,21 @@
 package model;
 
 import java.lang.Math;
-import java.time.Clock;
-import java.util.Calendar;
 
 /**
  * Created by timothy on 2016-10-11.
  */
 public class Player {
     private double x, y;
+    private double width, height;
     private double dx, dy;
     private long lastJump = 0;
 
-    public Player(double x, double y) {
+    public Player(double x, double y, double width, double height) {
         this.x = x;
         this.y = y;
+        this.width = width;
+        this.height = height;
     }
 
     public void walk(double dx) {
@@ -72,5 +73,22 @@ public class Player {
             dy = 0;
             y = boxY - height * 2;
         }
+    }
+
+    public boolean onTopOfPlayer(Player otherPlayer) {
+        if (x > otherPlayer.getX() - width &&
+                x < otherPlayer.getX() + width &&
+                Math.abs(y-otherPlayer.getY()) > height/2 &&
+                y < otherPlayer.getY())
+            return true;
+        return false;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
     }
 }

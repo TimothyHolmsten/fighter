@@ -24,7 +24,7 @@ public class FighterMenuBar extends MenuBar {
         MIPvP.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                WorldModel wModel = new WorldModel(new Player(0, 50), new Player(50, 50));
+                WorldModel wModel = new WorldModel(new Player(0, 50, 32, 32), new Player(50, 50, 32, 32));
                 WorldView wView = new WorldView(stage, wModel);
                 Scene scene = new Scene(wView);
                 stage.setScene(scene);
