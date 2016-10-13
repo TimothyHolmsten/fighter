@@ -131,9 +131,13 @@ public class WorldController {
                 double p1Speed = p1.getSpeed();
                 double p2Speed = p2.getSpeed();
                 if (p1Speed > 10 || p2Speed > 10) {
-                    if (p1Speed > p2Speed) {
+                    if (Math.abs(p1.getY() - p2.getY()) > 16
+                        && p1.getDy() > p2.getDy()
+                        && p1.getY() < p2.getY()) {
                         System.out.println("Player 1 wins!");
-                    } else if (p2Speed > p1Speed) {
+                    } else if (Math.abs(p1.getY() - p2.getY()) > 16
+                               && p2.getDy() > p1.getDy()
+                               && p2.getY() < p1.getY()) {
                         System.out.println("Player 2 wins!");
                     }
                 }
