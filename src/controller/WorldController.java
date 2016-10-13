@@ -66,6 +66,11 @@ public class WorldController {
                     case RIGHT:
                         model.getPlayer2().walk(100);
                         break;
+                    case UP:
+                        model.getPlayer2().jump(300);
+                        break;
+                    case DOWN:
+                        model.getPlayer2().attack(500);
 
                 }
             }
