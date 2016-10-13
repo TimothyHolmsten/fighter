@@ -10,6 +10,7 @@ public class Player {
     private double width, height;
     private double dx, dy;
     private long lastJump = 0;
+    private int score = 0;
 
     public Player(double x, double y, double width, double height) {
         this.x = x;
@@ -90,5 +91,13 @@ public class Player {
 
     public double getHeight() {
         return height;
+    }
+
+    public void addScore(int score) {
+        this.score += score;
+    }
+
+    public int getScore() {
+        return score;
     }
 }
