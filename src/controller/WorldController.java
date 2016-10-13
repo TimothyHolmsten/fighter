@@ -12,6 +12,8 @@ import view.WorldView;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
+import model.Player;
+import java.lang.Math;
 
 /**
  * Created by timothy on 2016-10-11.
@@ -71,10 +73,25 @@ public class WorldController {
 
         @Override
         public void handle(long now) {
+            Player p1 = model.getPlayer1();
+            Player p2 = model.getPlayer2();
 
+            p1.move(now - previous);
+            p2.move(now - previous);
 
-            model.getPlayer1().move(now - previous);
-            model.getPlayer2().move(now - previous);
+            if (Math.abs(p1.getX() - p2.getX()) < 16
+                && Math.abs(p1.getY() - p2.getY()) < 32) {
+                double p1Speed = p1.getSpeed();
+                double p2Speed = p2.getSpeed();
+                if (p1Speed > 10 || p2Speed > 10) {
+                    if (p1Speed > p2Speed) {
+                        System.out.println("Player 1 wins!");
+                    } else if (p2Speed > p1Speed) {
+                        System.out.println("Player 2 wins!");
+                    }
+                }
+            }
+
             view.updateView();
 
             previous = now;

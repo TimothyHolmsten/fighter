@@ -1,5 +1,7 @@
 package model;
 
+import java.lang.Math;
+
 /**
  * Created by timothy on 2016-10-11.
  */
@@ -30,6 +32,10 @@ public class Player {
 
     public double getDx() {
         return dx;
+    }
+
+    public double getSpeed() {
+        return Math.sqrt(dx*dx + dy*dy);
     }
 
     public void move(long elapsedTimeNs) {
