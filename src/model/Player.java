@@ -40,11 +40,5 @@ public class Player {
 
     public void move(long elapsedTimeNs) {
         x += dx * elapsedTimeNs / 1_000_000_000.0;
-
-        if(dx != 0)
-            if(dx < 0)
-                dx -= dx/10;
-            else if(dx > 0)
-                dx -= dx/10;
     }
 }

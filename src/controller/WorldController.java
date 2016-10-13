@@ -41,8 +41,6 @@ public class WorldController {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println(event.getText());
-
                 if(event.getCode() == KeyCode.ESCAPE)
                     handleEscEvent();
 
@@ -54,6 +52,31 @@ public class WorldController {
                     model.getPlayer2().walk(-100);
                 } else if (event.getCode() == KeyCode.RIGHT) {
                     model.getPlayer2().walk(100);
+                }
+            }
+        });
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                Player p1 = model.getPlayer1();
+                Player p2 = model.getPlayer2();
+                switch (e.getCode()) {
+                case A:
+                    if (p1.getDx() < 0)
+                        p1.walk(0);
+                    break;
+                case D:
+                    if (p1.getDx() > 0)
+                        p1.walk(0);
+                    break;
+                case LEFT:
+                    if (p2.getDx() < 0)
+                        p2.walk(0);
+                    break;
+                case RIGHT:
+                    if (p2.getDx() > 0)
+                        p2.walk(0);
+                    break;
                 }
             }
         });
