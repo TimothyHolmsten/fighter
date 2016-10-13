@@ -18,7 +18,9 @@ public class Player {
         this.dx = dx;
     }
 
-    public void jump(double dy) {this.dy += dy;}
+    public void jump(double dy) {
+        this.dy = -dy;
+    }
 
     public double getX() {
         return x;
@@ -37,7 +39,7 @@ public class Player {
     }
 
     public double getSpeed() {
-        return Math.sqrt(dx*dx + dy*dy);
+        return Math.sqrt(dx * dx + dy * dy);
     }
 
     public void move(long elapsedTimeNs) {
@@ -45,16 +47,16 @@ public class Player {
     }
 
     public void gravity(long elapsedTimeNs) {
-        y -= dy * elapsedTimeNs / 1_000_000_000.0;
+        y += 10 * elapsedTimeNs / 1_000_000_000.0;
     }
 
     public void constrain(double boxX, double boxY, double width, double height) {
         if (x > boxX - width)
             x = boxX - width;
-        else if(x < 0)
+        else if (x < 0)
             x = 0;
 
-        if(y < boxY + height)
-            y = boxY - height*2;
+        if (y > boxY - height * 2)
+            y = boxY - height * 2;
     }
 }
