@@ -44,6 +44,12 @@ public class WorldController {
             public void handle(KeyEvent event) {
                 System.out.println(event.getText());
 
+                switch (event.getCode()) {
+
+
+                    case A:
+                        model.getPlayer1().walk(-100);
+                }
                 if(event.getCode() == KeyCode.ESCAPE)
                     handleEscEvent();
 
@@ -80,6 +86,7 @@ public class WorldController {
                     if (p2.getDx() > 0)
                         p2.walk(0);
                     break;
+
                 }
             }
         });
