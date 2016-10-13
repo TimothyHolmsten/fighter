@@ -55,7 +55,10 @@ public class WorldController {
                         model.getPlayer1().walk(100);
                         break;
                     case W:
-                        model.getPlayer1().jump(1000);
+                        model.getPlayer1().jump(300);
+                        break;
+                    case S:
+                        model.getPlayer1().attack(500);
                         break;
 
                     case LEFT:

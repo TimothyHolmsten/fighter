@@ -1,6 +1,8 @@
 package model;
 
 import java.lang.Math;
+import java.time.Clock;
+import java.util.Calendar;
 
 /**
  * Created by timothy on 2016-10-11.
@@ -8,6 +10,7 @@ import java.lang.Math;
 public class Player {
     private double x, y;
     private double dx, dy;
+    private long lastJump = 0;
 
     public Player(double x, double y) {
         this.x = x;
@@ -19,7 +22,15 @@ public class Player {
     }
 
     public void jump(double dy) {
-        this.dy = -dy;
+        if (System.currentTimeMillis() - lastJump > 200) {
+            this.dy = -dy * y / 500;
+            lastJump = System.currentTimeMillis();
+        }
+
+    }
+
+    public void attack(double attackPower) {
+        dy = attackPower;
     }
 
     public double getX() {
@@ -44,10 +55,11 @@ public class Player {
 
     public void move(long elapsedTimeNs) {
         x += dx * elapsedTimeNs / 1_000_000_000.0;
+        y += dy * elapsedTimeNs / 1_000_000_000.0;
     }
 
     public void gravity(long elapsedTimeNs) {
-        y += 10 * elapsedTimeNs / 1_000_000_000.0;
+        dy += 900 * elapsedTimeNs / 1_000_000_000.0;
     }
 
     public void constrain(double boxX, double boxY, double width, double height) {
@@ -56,7 +68,9 @@ public class Player {
         else if (x < 0)
             x = 0;
 
-        if (y > boxY - height * 2)
+        if (y > boxY - height * 2) {
+            dy = 0;
             y = boxY - height * 2;
+        }
     }
 }
