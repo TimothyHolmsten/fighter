@@ -6,6 +6,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import model.MenuModel;
+import model.Player;
 import model.WorldModel;
 import view.MenuView;
 import view.WorldView;
@@ -72,9 +73,12 @@ public class WorldController {
         @Override
         public void handle(long now) {
 
+            for(Player p: model.getPlayers()) {
+                p.move(now-previous);
+                p.gravity(now-previous);
+                p.constrain(stage.getWidth(), stage.getHeight(), 32, 32);
+            }
 
-            model.getPlayer1().move(now - previous);
-            model.getPlayer2().move(now - previous);
             view.updateView();
 
             previous = now;

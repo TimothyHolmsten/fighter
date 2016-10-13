@@ -33,7 +33,7 @@ public class WorldView extends BorderPane {
     }
 
     private void initView() {
-        FighterMenuBar fmb = new FighterMenuBar(stage);
+        FighterMenuBar fmb = new FighterMenuBar(stage, true);
         setTop(fmb);
 
         player1 = new ImageView();
@@ -53,6 +53,9 @@ public class WorldView extends BorderPane {
 
     public void updateView() {
         player1.setX(model.getPlayer1().getX());
+        player1.setY(model.getPlayer1().getY());
+
         player2.setX(model.getPlayer2().getX());
+
     }
 }

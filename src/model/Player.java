@@ -16,6 +16,8 @@ public class Player {
         this.dx = dx;
     }
 
+    public void jump(double dy) {this.dy += dy;}
+
     public double getX() {
         return x;
     }
@@ -40,5 +42,19 @@ public class Player {
                 dx -= dx/10;
             else if(dx > 0)
                 dx -= dx/10;
+    }
+
+    public void gravity(long elapsedTimeNs) {
+        y -= dy * elapsedTimeNs / 1_000_000_000.0;
+    }
+
+    public void constrain(double boxX, double boxY, double width, double height) {
+        if (x > boxX - width)
+            x = boxX - width;
+        else if(x < 0)
+            x = 0;
+
+        if(y < boxY + height)
+            y = boxY - height*2;
     }
 }

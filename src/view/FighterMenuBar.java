@@ -13,7 +13,8 @@ import controller.WorldController;
 import model.Player;
 
 public class FighterMenuBar extends MenuBar {
-    public FighterMenuBar(Stage stage) {
+    public FighterMenuBar(Stage stage, boolean showPause) {
+
         Menu gameMenu = new Menu("Game");
 
         MenuItem MIPvP = new MenuItem("Start Player vs Player");
@@ -38,7 +39,10 @@ public class FighterMenuBar extends MenuBar {
             }
         });
 
-        gameMenu.getItems().addAll(MIPvP, MIPvAI, MIPause, MIHighscore, MIExit);
+        if (showPause)
+            gameMenu.getItems().addAll(MIPvP, MIPvAI, MIPause, MIHighscore, MIExit);
+        else
+            gameMenu.getItems().addAll(MIPvP, MIPvAI, MIHighscore, MIExit);
 
         Menu helpMenu = new Menu("Help");
         MenuItem MIHow = new MenuItem("How to play");
