@@ -45,22 +45,26 @@ public class WorldController {
                 System.out.println(event.getText());
 
                 switch (event.getCode()) {
-
-
+                    case ESCAPE:
+                        handleEscEvent();
+                        break;
                     case A:
                         model.getPlayer1().walk(-100);
-                }
-                if(event.getCode() == KeyCode.ESCAPE)
-                    handleEscEvent();
+                        break;
+                    case D:
+                        model.getPlayer1().walk(100);
+                        break;
+                    case W:
+                        model.getPlayer1().jump(1000);
+                        break;
 
-                if (event.getCode() == KeyCode.A) {
-                    model.getPlayer1().walk(-100);
-                } else if (event.getCode() == KeyCode.D) {
-                    model.getPlayer1().walk(100);
-                } else if (event.getCode() == KeyCode.LEFT) {
-                    model.getPlayer2().walk(-100);
-                } else if (event.getCode() == KeyCode.RIGHT) {
-                    model.getPlayer2().walk(100);
+                    case LEFT:
+                        model.getPlayer2().walk(-100);
+                        break;
+                    case RIGHT:
+                        model.getPlayer2().walk(100);
+                        break;
+
                 }
             }
         });
