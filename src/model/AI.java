@@ -13,15 +13,19 @@ public class AI extends Player {
 
     public void think() {
         double diffX = enemyPlayer.getX() - getX();
+        boolean attacked = false;
 
-        if (getY() <= enemyPlayer.getY()) {
-            walk(enemyPlayer.getX() - getX());
+        if(getY() <= enemyPlayer.getY() && Math.abs(diffX) < 5) {
+            attack(500);
+            attacked = true;
         }
+        else if (getY() <= enemyPlayer.getY())
+            walk(diffX);
         else if(Math.abs(diffX) > 10)
-            walk( diffX - (1000/diffX) );
+            walk( diffX - (2000/diffX) );
 
-
-
+        if(Math.abs(diffX) < enemyPlayer.getWidth() && !attacked)
+            jump(300);
 
     }
 }

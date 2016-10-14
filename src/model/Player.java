@@ -10,6 +10,7 @@ public class Player {
     private double width, height;
     private double dx, dy;
     private long lastJump = 0;
+    private long lastAttack = 0;
     private int score = 0;
 
     public Player(double x, double y, double width, double height) {
@@ -32,7 +33,10 @@ public class Player {
     }
 
     public void attack(double attackPower) {
-        dy = attackPower;
+        if (System.currentTimeMillis() - lastAttack > 500) {
+            dy = attackPower;
+            lastAttack = System.currentTimeMillis();
+        }
     }
 
     public double getX() {
@@ -79,7 +83,7 @@ public class Player {
     public boolean onTopOfPlayer(Player otherPlayer) {
         if (x > otherPlayer.getX() - width &&
                 x < otherPlayer.getX() + width &&
-                Math.abs(y-otherPlayer.getY()) > height/2 &&
+                Math.abs(y - otherPlayer.getY()) > height / 2 &&
                 y < otherPlayer.getY())
             return true;
         return false;
