@@ -11,6 +11,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.AI;
 import model.Player;
 import model.WorldModel;
 
@@ -31,6 +32,18 @@ public class FighterMenuBar extends MenuBar {
             }
         });
         MenuItem MIPvAI = new MenuItem("Start Player vs AI");
+        MIPvAI.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Player realPlayer = new Player(0, 50, 32, 32);
+
+                WorldModel wModel = new WorldModel(realPlayer, new AI(50, 50, 32, 32, realPlayer));
+                WorldView wView = new WorldView(stage, wModel);
+                Scene scene = new Scene(wView);
+                stage.setScene(scene);
+                WorldController worldController = new WorldController(stage, scene, wModel, wView);
+            }
+        });
         MenuItem MIPause = new MenuItem("Pause");
         MenuItem MIHighscore = new MenuItem("Show highscore");
         MenuItem MIExit = new MenuItem("Exit");

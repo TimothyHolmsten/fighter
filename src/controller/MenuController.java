@@ -30,7 +30,7 @@ public class MenuController {
 
     public void handlePvPEvent() {
         System.out.println("pvp");
-        WorldModel wModel = new WorldModel(new Player(0,50,32,32), new Player(50,50,32,32));
+        WorldModel wModel = new WorldModel(new Player(0, 50, 32, 32), new Player(50, 50, 32, 32));
         WorldView wView = new WorldView(stage, wModel);
         scene = new Scene(wView);
         stage.setScene(scene);
@@ -44,9 +44,9 @@ public class MenuController {
     public void handlePvAIEvent() {
         System.out.println("PvAI");
 
-        Player realPlayer = new Player(0,50,32,32);
+        Player realPlayer = new Player(0, 50, 32, 32);
 
-        WorldModel wModel = new WorldModel(realPlayer, new AI(50,50,32,32,realPlayer));
+        WorldModel wModel = new WorldModel(realPlayer, new AI(50, 50, 32, 32, realPlayer));
         WorldView wView = new WorldView(stage, wModel);
         scene = new Scene(wView);
         stage.setScene(scene);
