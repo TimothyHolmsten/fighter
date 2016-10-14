@@ -55,7 +55,10 @@ public class FighterMenuBar extends MenuBar {
                 Stage stage = new Stage();
                 BorderPane root = new BorderPane();
                 String htpText = "How to play:\n\n"
-                    + "1. Win!";
+                        + "Player 1 controls: W A S D\n" +
+                        "Player 2 controls: Arrow keys\n\n" +
+                        "The purpose of the game is to jump onto the head of the opponent.\n" +
+                        "The players can jump and attack where attack makes the player dive faster.";
                 Label text = new Label(htpText);
                 text.setPadding(new Insets(10));
                 root.setCenter(text);
