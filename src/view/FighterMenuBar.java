@@ -4,16 +4,22 @@ import controller.WorldController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.scene.control.TextInputDialog;
+import java.util.ArrayList;
 import model.AI;
 import model.Player;
 import model.WorldModel;
+import model.HighscoreList;
+import model.HighscoreEntry;
 
 public class FighterMenuBar extends MenuBar {
     public FighterMenuBar(Stage stage, boolean showPause) {
@@ -46,6 +52,31 @@ public class FighterMenuBar extends MenuBar {
         });
         MenuItem MIPause = new MenuItem("Pause");
         MenuItem MIHighscore = new MenuItem("Show highscore");
+        MIHighscore.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ArrayList<HighscoreEntry> list
+                    = HighscoreList.getInstance().getList();
+                Stage stage = new Stage();
+                stage.setTitle("Highscore");
+                GridPane root = new GridPane();
+                root.setVgap(10);
+                root.setHgap(10);
+                root.setAlignment(Pos.CENTER);
+                int row = 0;
+                HighscoreList.getInstance().sort();
+                for (HighscoreEntry entry : list) {
+                    Label name = new Label(entry.name);
+                    Label score = new Label(Integer.toString(entry.score));
+                    root.add(name, 0, row);
+                    root.add(score, 1, row);
+                    row++;
+                }
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
         MenuItem MIExit = new MenuItem("Exit");
         MIExit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
