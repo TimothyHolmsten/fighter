@@ -1,5 +1,6 @@
 package view;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,6 +23,7 @@ public class WorldView extends BorderPane {
     private Label p1ScoreLabel;
     private int p2Score = -1;
     private Label p2ScoreLabel;
+    private Label timeLabel;
 
     public WorldView(Stage stage, WorldModel model) {
         this.model = model;
@@ -33,6 +35,13 @@ public class WorldView extends BorderPane {
     private void initView() {
         anchorPane = new AnchorPane();
         setCenter(anchorPane);
+
+        timeLabel = new Label();
+        anchorPane.setTopAnchor(timeLabel, 20.0);
+        anchorPane.setLeftAnchor(timeLabel, 0.0);
+        timeLabel.setAlignment(Pos.CENTER);
+        timeLabel.setMinWidth(stage.getWidth());
+        anchorPane.getChildren().add(timeLabel);
 
         p1ScoreLabel = new Label("Player 1: ");
         anchorPane.setLeftAnchor(p1ScoreLabel, 20.0);
@@ -65,6 +74,8 @@ public class WorldView extends BorderPane {
     public void updateView() {
         Player p1 = model.getPlayer1();
         Player p2 = model.getPlayer2();
+
+        timeLabel.textProperty().setValue(Integer.toString(model.timeLeft / 1000));
 
         player1.setX(p1.getX());
         player1.setY(p1.getY());

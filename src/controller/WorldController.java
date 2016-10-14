@@ -20,6 +20,7 @@ public class WorldController {
     private final WorldView view;
     private final Stage stage;
     private Scene scene;
+    private long endTime;
 
     public WorldController(Stage stage, Scene scene,
                            WorldModel model, WorldView view) {
@@ -28,6 +29,8 @@ public class WorldController {
         this.view = view;
         this.stage = stage;
         this.scene = scene;
+        endTime = System.currentTimeMillis() + 60 * 1000;
+        model.timeLeft = (int)(endTime - System.currentTimeMillis());
 
         addEventHandlers();
         UpdateTimer updateTimer = new UpdateTimer();
@@ -124,6 +127,8 @@ public class WorldController {
         public void handle(long now) {
             Player p1 = model.getPlayer1();
             Player p2 = model.getPlayer2();
+
+            model.timeLeft = (int)(endTime - System.currentTimeMillis());
 
             for (Player p : model.getPlayers()) {
                 p.move(now - previous);

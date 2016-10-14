@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by timothy on 2016-10-11.
  */
 public class WorldModel {
+    public int timeLeft;
     private Player player1;
     private Player player2;
 
