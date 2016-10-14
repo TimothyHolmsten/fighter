@@ -1,22 +1,13 @@
 package view;
 
-import controller.MenuController;
-import controller.WorldController;
-import javafx.event.EventHandler;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.control.Label;
-import model.WorldModel;
+import javafx.stage.Stage;
 import model.Player;
+import model.WorldModel;
 
 /**
  * Created by timothy on 2016-10-11.

@@ -1,19 +1,18 @@
 package view;
 
-import javafx.stage.Stage;
-import javafx.scene.Scene;
+import controller.WorldController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.MenuBar;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.control.Label;
 import javafx.geometry.Insets;
-import model.WorldModel;
-import view.WorldView;
-import controller.WorldController;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import model.Player;
+import model.WorldModel;
 
 public class FighterMenuBar extends MenuBar {
     public FighterMenuBar(Stage stage, boolean showPause) {

@@ -1,15 +1,14 @@
 package view;
 
-import javafx.stage.Stage;
 import controller.MenuController;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import model.MenuModel;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import model.MenuModel;
 
 /**
  * Created by timothy on 2016-10-11.

@@ -1,19 +1,16 @@
 package controller;
 
 import javafx.animation.AnimationTimer;
-import javafx.scene.control.Menu;
-import javafx.scene.input.KeyCode;
-import javafx.stage.Stage;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import model.*;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import model.AI;
+import model.MenuModel;
+import model.Player;
+import model.WorldModel;
 import view.MenuView;
 import view.WorldView;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.KeyEvent;
-import model.Player;
-
-import java.lang.Math;
 
 /**
  * Created by timothy on 2016-10-11.

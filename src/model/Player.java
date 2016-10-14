@@ -1,7 +1,5 @@
 package model;
 
-import java.lang.Math;
-
 /**
  * Created by timothy on 2016-10-11.
  */

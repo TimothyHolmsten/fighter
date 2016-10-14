@@ -1,11 +1,6 @@
 package controller;
 
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.AI;
 import model.MenuModel;
@@ -13,9 +8,6 @@ import model.Player;
 import model.WorldModel;
 import view.MenuView;
 import view.WorldView;
-
-import java.util.ArrayList;
-import java.util.Observable;
 
 /**
  * Created by timothy on 2016-10-11.
