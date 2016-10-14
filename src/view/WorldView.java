@@ -24,6 +24,7 @@ import model.Player;
 public class WorldView extends BorderPane {
     private final WorldModel model;
     private Stage stage;
+    private AnchorPane anchorPane;
     private ImageView player1;
     private ImageView player2;
     private int p1Score = -1;
@@ -39,6 +40,19 @@ public class WorldView extends BorderPane {
     }
 
     private void initView() {
+        anchorPane = new AnchorPane();
+        setCenter(anchorPane);
+
+        p1ScoreLabel = new Label("Player 1: ");
+        anchorPane.setLeftAnchor(p1ScoreLabel, 20.0);
+        anchorPane.setTopAnchor(p1ScoreLabel, 20.0);
+        anchorPane.getChildren().add(p1ScoreLabel);
+
+        p2ScoreLabel = new Label("Player 2: ");
+        anchorPane.setRightAnchor(p2ScoreLabel, 20.0);
+        anchorPane.setTopAnchor(p2ScoreLabel, 20.0);
+        anchorPane.getChildren().add(p2ScoreLabel);
+
         FighterMenuBar fmb = new FighterMenuBar(stage, true);
         setTop(fmb);
 
@@ -54,7 +68,7 @@ public class WorldView extends BorderPane {
         player2.setX(model.getPlayer2().getX());
         player2.setY(model.getPlayer2().getY());
 
-        getChildren().addAll(player1,player2);
+        getChildren().addAll(player1, player2);
     }
 
     public void updateView() {
@@ -68,17 +82,11 @@ public class WorldView extends BorderPane {
         player2.setY(p2.getY());
 
         if (p1.getScore() != p1Score) {
-            p1ScoreLabel = new Label("Player 1: " + p1.getScore());
-            p1ScoreLabel.setLayoutX(50);
-            p1ScoreLabel.setLayoutY(50);
-            getChildren().add(p1ScoreLabel);
+            p1ScoreLabel.textProperty().setValue("Player 1: " + p1.getScore());
             p1Score = p1.getScore();
         }
         if (p2.getScore() != p2Score) {
-            p2ScoreLabel = new Label("Player 2: " + p2.getScore());
-            p2ScoreLabel.setLayoutX(50);
-            p2ScoreLabel.setLayoutY(100);
-            getChildren().add(p2ScoreLabel);
+            p2ScoreLabel.textProperty().setValue("Player 2: " + p2.getScore());
             p2Score = p2.getScore();
         }
     }
