@@ -96,6 +96,7 @@ public class FighterMenuBar extends MenuBar {
             @Override
             public void handle(ActionEvent e) {
                 Stage stage = new Stage();
+                stage.setTitle("How to play");
                 BorderPane root = new BorderPane();
                 String htpText = "How to play:\n\n"
                         + "Player 1 controls: W A S D\n" +
