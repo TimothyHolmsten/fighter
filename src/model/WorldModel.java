@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * method should be called every frame.
  */
 public class WorldModel {
-    /** The time left before the game ends. */
+    /** The time left until the game ends. */
     public int timeLeft;
 
     private Player player1;
