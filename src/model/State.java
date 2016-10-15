@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Created by timothy on 2016-10-15.
+ * This enum represents the state of the game.
  */
 public enum State {
     PAUSED, RUNNING
