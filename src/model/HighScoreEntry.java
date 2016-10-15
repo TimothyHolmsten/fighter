@@ -14,12 +14,6 @@ public class HighScoreEntry
 
     @Override
     public int compareTo(HighScoreEntry other) {
-        if (score < other.score) {
-            return -1;
-        } else if (score > other.score) {
-            return 1;
-        } else {
-            return 0;
-        }
+        return ((Integer)score).compareTo(other.score);
     }
 }
