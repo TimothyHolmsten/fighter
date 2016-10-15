@@ -22,7 +22,7 @@ public class FighterGame extends Application {
         MenuView menuView = new MenuView(primaryStage, menuModel);
         Scene scene = new Scene(menuView);
         MenuController menuController = new MenuController(primaryStage, scene,
-                                                           menuModel, menuView);
+                menuModel, menuView);
         menuView.addEventHandlers(menuController);
 
         primaryStage.setScene(scene);

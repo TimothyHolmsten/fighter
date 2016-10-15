@@ -125,7 +125,7 @@ public class WorldController {
 
         @Override
         public void handle(long now) {
-            Player p1 = model.getPlayer1();
+            /*Player p1 = model.getPlayer1();
             Player p2 = model.getPlayer2();
 
             model.timeLeft = (int)(endTime - System.currentTimeMillis());
@@ -151,7 +151,8 @@ public class WorldController {
                         p2.jump(1000);
                     }
                 }
-            }
+            }*/
+            model.play(now - previous, stage.getWidth(), stage.getHeight());
 
             view.updateView();
 

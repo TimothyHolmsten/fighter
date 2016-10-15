@@ -9,10 +9,14 @@ public class WorldModel {
     public int timeLeft;
     private Player player1;
     private Player player2;
+    private long endTime;
 
     public WorldModel(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
+
+        endTime = System.currentTimeMillis() + 60 * 1000;
+        timeLeft = (int) (endTime - System.currentTimeMillis());
     }
 
     public Player getPlayer1() {
@@ -29,5 +33,61 @@ public class WorldModel {
         players.add(player2);
 
         return players;
+    }
+
+    public void play(long time, double boxX, double boxY) {
+        /*
+        Player p1 = model.getPlayer1();
+        Player p2 = model.getPlayer2();
+
+        model.timeLeft = (int)(endTime - System.currentTimeMillis());
+
+        for (Player p : model.getPlayers()) {
+            p.move(now - previous);
+            p.gravity(now - previous);
+            p.constrain(stage.getWidth(), stage.getHeight());
+            if (p instanceof AI)
+                ((AI) p).think();
+        }
+
+        if (Math.abs(p1.getX() - p2.getX()) < 16
+                && Math.abs(p1.getY() - p2.getY()) < 32) {
+            double p1Speed = p1.getSpeed();
+            double p2Speed = p2.getSpeed();
+            if (p1Speed > 10 || p2Speed > 10) {
+                if (p1.onTopOfPlayer(p2) && p1.getDy() > p2.getDy()) {
+                    p1.addScore(1);
+                    p1.jump(1000);
+                } else if (p2.onTopOfPlayer(p1) && p2.getDy() > p1.getDy()) {
+                    p2.addScore(1);
+                    p2.jump(1000);
+                }
+            }
+        }
+        */
+        timeLeft = (int) (endTime - System.currentTimeMillis());
+
+        for (Player p : getPlayers()) {
+            p.move(time);
+            p.gravity(time);
+            p.constrain(boxX, boxY);
+            if (p instanceof AI)
+                ((AI) p).think();
+        }
+
+        if (Math.abs(player1.getX() - player2.getX()) < 16
+                && Math.abs(player1.getY() - player2.getY()) < 32) {
+            double p1Speed = player1.getSpeed();
+            double p2Speed = player2.getSpeed();
+            if (p1Speed > 10 || p2Speed > 10) {
+                if (player1.onTopOfPlayer(player2) && player1.getDy() > player2.getDy()) {
+                    player1.addScore(1);
+                    player1.jump(1000);
+                } else if (player2.onTopOfPlayer(player1) && player2.getDy() > player1.getDy()) {
+                    player2.addScore(1);
+                    player2.jump(1000);
+                }
+            }
+        }
     }
 }
