@@ -93,31 +93,30 @@ public class WorldController {
             public void handle(KeyEvent e) {
                 Player p1 = model.getPlayer1();
                 Player p2 = model.getPlayer2();
-                if (model.getState() == State.RUNNING) {
-                    if (!(p1 instanceof AI))
-                        switch (e.getCode()) {
-                            case A:
-                                if (p1.getDx() < 0)
-                                    p1.walk(0);
-                                break;
-                            case D:
-                                if (p1.getDx() > 0)
-                                    p1.walk(0);
-                                break;
-                        }
-                    if (!(p2 instanceof AI))
-                        switch (e.getCode()) {
-                            case LEFT:
-                                if (p2.getDx() < 0)
-                                    p2.walk(0);
-                                break;
-                            case RIGHT:
-                                if (p2.getDx() > 0)
-                                    p2.walk(0);
-                                break;
+                if (!(p1 instanceof AI))
+                    switch (e.getCode()) {
+                        case A:
+                            if (p1.getDx() < 0)
+                                p1.walk(0);
+                            break;
+                        case D:
+                            if (p1.getDx() > 0)
+                                p1.walk(0);
+                            break;
+                    }
+                if (!(p2 instanceof AI))
+                    switch (e.getCode()) {
+                        case LEFT:
+                            if (p2.getDx() < 0)
+                                p2.walk(0);
+                            break;
+                        case RIGHT:
+                            if (p2.getDx() > 0)
+                                p2.walk(0);
+                            break;
 
-                        }
-                }
+                    }
+
             }
         });
     }
