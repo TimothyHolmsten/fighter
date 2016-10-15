@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class HighScoreEntry
-    implements Comparable<HighScoreEntry>, Serializable {
+        implements Comparable<HighScoreEntry>, Serializable {
     public String name;
     public int score;
 

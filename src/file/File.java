@@ -1,20 +1,17 @@
 package file;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class File {
     /**
      * Writes the object to the file.
+     *
      * @param filename the name of the file
-     * @param obj the object to write
+     * @param obj      the object to write
      * @throws IOException
      */
     public static void writeObject(String filename, Object obj)
-        throws IOException {
+            throws IOException {
         ObjectOutputStream ostream = null;
         try {
             ostream = new ObjectOutputStream(new FileOutputStream(filename));
@@ -31,13 +28,14 @@ public class File {
 
     /**
      * Reads object from file.
+     *
      * @param filename the name of the file
      * @return the object
      * @throws IOException
      * @throws ClassNotFoundException
      */
     public static Object readObject(String filename)
-        throws IOException,ClassNotFoundException {
+            throws IOException, ClassNotFoundException {
         ObjectInputStream istream = null;
         Object obj;
         try {

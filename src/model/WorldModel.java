@@ -72,6 +72,8 @@ public class WorldModel {
                     }
                 }
             }
+        } else {
+            endTime = System.currentTimeMillis() + timeLeft;
         }
     }
 }

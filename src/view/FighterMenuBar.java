@@ -54,8 +54,7 @@ public class FighterMenuBar extends MenuBar {
                 if (worldModel.getState() == State.RUNNING) {
                     worldModel.setState(State.PAUSED);
                     MIPause.setText("Resume");
-                }
-                else {
+                } else {
                     worldModel.setState(State.RUNNING);
                     MIPause.setText("Pause");
                 }

@@ -1,18 +1,17 @@
 import controller.MenuController;
+import file.File;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.HighScoreList;
 import model.MenuModel;
 import view.MenuView;
-import model.HighScoreList;
-import file.File;
 
 public class FighterGame extends Application {
 
     public static void main(String[] args) {
         try {
-            HighScoreList.setInstance((HighScoreList)File.readObject("highscorelist"));
+            HighScoreList.setInstance((HighScoreList) File.readObject("highscorelist"));
         } catch (Exception e) {
         }
         launch(args);
