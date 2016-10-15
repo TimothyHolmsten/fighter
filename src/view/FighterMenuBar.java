@@ -13,13 +13,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.scene.control.TextInputDialog;
+
 import java.util.ArrayList;
 import model.AI;
 import model.Player;
 import model.WorldModel;
-import model.HighscoreList;
-import model.HighscoreEntry;
+import model.HighScoreList;
+import model.HighScoreEntry;
 
 public class FighterMenuBar extends MenuBar {
     public FighterMenuBar(Stage stage, boolean showPause) {
@@ -55,8 +55,8 @@ public class FighterMenuBar extends MenuBar {
         MIHighscore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ArrayList<HighscoreEntry> list
-                    = HighscoreList.getInstance().getList();
+                ArrayList<HighScoreEntry> list
+                    = HighScoreList.getInstance().getList();
                 Stage stage = new Stage();
                 stage.setTitle("Highscore");
                 GridPane root = new GridPane();
@@ -64,8 +64,8 @@ public class FighterMenuBar extends MenuBar {
                 root.setHgap(10);
                 root.setAlignment(Pos.CENTER);
                 int row = 0;
-                HighscoreList.getInstance().sort();
-                for (HighscoreEntry entry : list) {
+                HighScoreList.getInstance().sort();
+                for (HighScoreEntry entry : list) {
                     Label name = new Label(entry.name);
                     Label score = new Label(Integer.toString(entry.score));
                     root.add(name, 0, row);

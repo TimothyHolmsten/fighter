@@ -45,8 +45,8 @@ public class WorldController {
 
                 switch (event.getCode()) {
                     case ESCAPE:
-                        handleEscEvent();
                         updateTimer.stop();
+                        handleEscEvent();
                         break;
                 }
                 if (!(model.getPlayer1() instanceof AI))
