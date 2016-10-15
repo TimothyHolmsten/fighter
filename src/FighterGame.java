@@ -4,14 +4,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.MenuModel;
 import view.MenuView;
-import model.HighscoreList;
+import model.HighScoreList;
 import file.File;
 
 public class FighterGame extends Application {
 
     public static void main(String[] args) {
         try {
-            HighscoreList.setInstance((HighscoreList)File.readObject("highscorelist"));
+            HighScoreList.setInstance((HighScoreList)File.readObject("highscorelist"));
         } catch (Exception e) {
         }
         launch(args);
@@ -23,7 +23,7 @@ public class FighterGame extends Application {
         MenuView menuView = new MenuView(primaryStage, menuModel);
         Scene scene = new Scene(menuView);
         MenuController menuController = new MenuController(primaryStage, scene,
-                                                           menuModel, menuView);
+                menuModel, menuView);
         menuView.addEventHandlers(menuController);
 
         primaryStage.setScene(scene);

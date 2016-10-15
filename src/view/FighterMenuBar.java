@@ -13,12 +13,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import model.AI;
 import model.Player;
 import model.WorldModel;
-import model.HighscoreList;
-import model.HighscoreEntry;
+import model.HighScoreList;
+import model.HighScoreEntry;
 import file.File;
 
 public class FighterMenuBar extends MenuBar {
@@ -34,7 +35,7 @@ public class FighterMenuBar extends MenuBar {
                 WorldView wView = new WorldView(stage, wModel);
                 Scene scene = new Scene(wView);
                 stage.setScene(scene);
-                WorldController worldController = new WorldController(stage, scene, wModel, wView);
+                new WorldController(stage, scene, wModel, wView);
             }
         });
         MenuItem MIPvAI = new MenuItem("Start Player vs AI");
@@ -47,7 +48,7 @@ public class FighterMenuBar extends MenuBar {
                 WorldView wView = new WorldView(stage, wModel);
                 Scene scene = new Scene(wView);
                 stage.setScene(scene);
-                WorldController worldController = new WorldController(stage, scene, wModel, wView);
+                new WorldController(stage, scene, wModel, wView);
             }
         });
         MenuItem MIPause = new MenuItem("Pause");
@@ -55,8 +56,8 @@ public class FighterMenuBar extends MenuBar {
         MIHighscore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ArrayList<HighscoreEntry> list
-                    = HighscoreList.getInstance().getList();
+                ArrayList<HighScoreEntry> list
+                    = HighScoreList.getInstance().getList();
                 Stage stage = new Stage();
                 stage.setTitle("Highscore");
                 GridPane root = new GridPane();
@@ -64,8 +65,8 @@ public class FighterMenuBar extends MenuBar {
                 root.setHgap(10);
                 root.setAlignment(Pos.CENTER);
                 int row = 0;
-                HighscoreList.getInstance().sort();
-                for (HighscoreEntry entry : list) {
+                HighScoreList.getInstance().sort();
+                for (HighScoreEntry entry : list) {
                     Label name = new Label(entry.name);
                     Label score = new Label(Integer.toString(entry.score));
                     root.add(name, 0, row);
@@ -102,7 +103,8 @@ public class FighterMenuBar extends MenuBar {
                         + "Player 1 controls: W A S D\n" +
                         "Player 2 controls: Arrow keys\n\n" +
                         "The purpose of the game is to jump onto the head of the opponent.\n" +
-                        "The players can jump and attack where attack makes the player dive faster.";
+                        "The players can jump and attack where attack makes the player dive faster.\n\n\n" +
+                        "Press ESC to go back to the menu.";
                 Label text = new Label(htpText);
                 text.setPadding(new Insets(10));
                 root.setCenter(text);

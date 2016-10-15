@@ -17,7 +17,7 @@ import model.Player;
 import model.WorldModel;
 import view.MenuView;
 import view.WorldView;
-import model.HighscoreList;
+import model.HighScoreList;
 import file.File;
 
 /**
@@ -29,6 +29,7 @@ public class WorldController {
     private final Stage stage;
     private Scene scene;
     private long endTime;
+    private final UpdateTimer updateTimer;
 
     public WorldController(Stage stage, Scene scene,
                            WorldModel model, WorldView view) {
@@ -41,7 +42,7 @@ public class WorldController {
         model.timeLeft = (int)(endTime - System.currentTimeMillis());
 
         addEventHandlers();
-        UpdateTimer updateTimer = new UpdateTimer();
+        updateTimer = new UpdateTimer();
         updateTimer.start();
     }
 
@@ -52,6 +53,7 @@ public class WorldController {
 
                 switch (event.getCode()) {
                     case ESCAPE:
+                        updateTimer.stop();
                         handleEscEvent();
                         break;
                 }
@@ -133,7 +135,7 @@ public class WorldController {
 
         @Override
         public void handle(long now) {
-            Player p1 = model.getPlayer1();
+            /*Player p1 = model.getPlayer1();
             Player p2 = model.getPlayer2();
 
             model.timeLeft = (int)(endTime - System.currentTimeMillis());
@@ -146,11 +148,11 @@ public class WorldController {
                         tid.setContentText("Enter your name:");
                         Optional<String> name = tid.showAndWait();
                         if (name.isPresent()) {
-                            HighscoreList.getInstance().add(name.get(),
+                            HighScoreList.getInstance().add(name.get(),
                                                             p1.getScore());
                             try {
                                 File.writeObject("highscorelist",
-                                                 HighscoreList.getInstance());
+                                                 HighScoreList.getInstance());
                             } catch (IOException e) {
                                 Alert a = new Alert(Alert.AlertType.WARNING,
                                                     "Could not write to file.",
@@ -191,7 +193,10 @@ public class WorldController {
                         p2.jump(1000);
                     }
                 }
-            }
+            }*/
+
+            System.out.println("g");
+            model.play(now - previous, stage.getWidth(), stage.getHeight());
 
             view.updateView();
 
