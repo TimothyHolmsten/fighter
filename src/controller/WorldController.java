@@ -38,8 +38,6 @@ public class WorldController {
         this.view = view;
         this.stage = stage;
         this.scene = scene;
-        endTime = System.currentTimeMillis() + 60 * 1000;
-        model.timeLeft = (int)(endTime - System.currentTimeMillis());
 
         addEventHandlers();
         updateTimer = new UpdateTimer();
@@ -139,38 +137,6 @@ public class WorldController {
             Player p2 = model.getPlayer2();
 
             model.timeLeft = (int)(endTime - System.currentTimeMillis());
-            if (model.timeLeft <= 0) {
-                stop();
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextInputDialog tid = new TextInputDialog();
-                        tid.setContentText("Enter your name:");
-                        Optional<String> name = tid.showAndWait();
-                        if (name.isPresent()) {
-                            HighScoreList.getInstance().add(name.get(),
-                                                            p1.getScore());
-                            try {
-                                File.writeObject("highscorelist",
-                                                 HighScoreList.getInstance());
-                            } catch (IOException e) {
-                                Alert a = new Alert(Alert.AlertType.WARNING,
-                                                    "Could not write to file.",
-                                                    ButtonType.OK);
-                                a.showAndWait();
-                            }
-                        }
-
-                        MenuModel mModel = new MenuModel();
-                        MenuView mView = new MenuView(stage, mModel);
-                        scene = new Scene(mView);
-                        stage.setScene(scene);
-                        MenuController menuController = new MenuController(stage, scene, mModel, mView);
-                        mView.addEventHandlers(menuController);
-                    }
-                });
-                return;
-            }
 
             for (Player p : model.getPlayers()) {
                 p.move(now - previous);
@@ -197,6 +163,38 @@ public class WorldController {
 
             System.out.println("g");
             model.play(now - previous, stage.getWidth(), stage.getHeight());
+
+            if (model.timeLeft <= 0) {
+                stop();
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextInputDialog tid = new TextInputDialog();
+                        tid.setContentText("Enter your name:");
+                        Optional<String> name = tid.showAndWait();
+                        if (name.isPresent()) {
+                            HighScoreList.getInstance().add(name.get(), model.getPlayer1().getScore());
+                            try {
+                                File.writeObject("highscorelist",
+                                                 HighScoreList.getInstance());
+                            } catch (IOException e) {
+                                Alert a = new Alert(Alert.AlertType.WARNING,
+                                                    "Could not write to file.",
+                                                    ButtonType.OK);
+                                a.showAndWait();
+                            }
+                        }
+
+                        MenuModel mModel = new MenuModel();
+                        MenuView mView = new MenuView(stage, mModel);
+                        scene = new Scene(mView);
+                        stage.setScene(scene);
+                        MenuController menuController = new MenuController(stage, scene, mModel, mView);
+                        mView.addEventHandlers(menuController);
+                    }
+                });
+                return;
+            }
 
             view.updateView();
 
