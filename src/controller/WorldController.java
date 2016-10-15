@@ -166,33 +166,35 @@ public class WorldController {
 
             if (model.timeLeft <= 0) {
                 stop();
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextInputDialog tid = new TextInputDialog();
-                        tid.setContentText("Enter your name:");
-                        Optional<String> name = tid.showAndWait();
-                        if (name.isPresent()) {
-                            HighScoreList.getInstance().add(name.get(), model.getPlayer1().getScore());
-                            try {
-                                File.writeObject("highscorelist",
-                                                 HighScoreList.getInstance());
-                            } catch (IOException e) {
-                                Alert a = new Alert(Alert.AlertType.WARNING,
-                                                    "Could not write to file.",
-                                                    ButtonType.OK);
-                                a.showAndWait();
+                if (model.getPlayer2() instanceof AI) {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextInputDialog tid = new TextInputDialog();
+                            tid.setContentText("Enter your name:");
+                            Optional<String> name = tid.showAndWait();
+                            if (name.isPresent()) {
+                                HighScoreList.getInstance().add(name.get(), model.getPlayer1().getScore());
+                                try {
+                                    File.writeObject("highscorelist",
+                                                     HighScoreList.getInstance());
+                                } catch (IOException e) {
+                                    Alert a = new Alert(Alert.AlertType.WARNING,
+                                                        "Could not write to file.",
+                                                        ButtonType.OK);
+                                    a.showAndWait();
+                                }
                             }
-                        }
 
-                        MenuModel mModel = new MenuModel();
-                        MenuView mView = new MenuView(stage, mModel);
-                        scene = new Scene(mView);
-                        stage.setScene(scene);
-                        MenuController menuController = new MenuController(stage, scene, mModel, mView);
-                        mView.addEventHandlers(menuController);
-                    }
-                });
+                            MenuModel mModel = new MenuModel();
+                            MenuView mView = new MenuView(stage, mModel);
+                            scene = new Scene(mView);
+                            stage.setScene(scene);
+                            MenuController menuController = new MenuController(stage, scene, mModel, mView);
+                            mView.addEventHandlers(menuController);
+                        }
+                    });
+                }
                 return;
             }
 
