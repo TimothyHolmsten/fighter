@@ -21,6 +21,7 @@ public class WorldController {
     private final Stage stage;
     private Scene scene;
     private long endTime;
+    private final UpdateTimer updateTimer;
 
     public WorldController(Stage stage, Scene scene,
                            WorldModel model, WorldView view) {
@@ -33,7 +34,7 @@ public class WorldController {
         model.timeLeft = (int)(endTime - System.currentTimeMillis());
 
         addEventHandlers();
-        UpdateTimer updateTimer = new UpdateTimer();
+        updateTimer = new UpdateTimer();
         updateTimer.start();
     }
 
@@ -45,6 +46,7 @@ public class WorldController {
                 switch (event.getCode()) {
                     case ESCAPE:
                         handleEscEvent();
+                        updateTimer.stop();
                         break;
                 }
                 if (!(model.getPlayer1() instanceof AI))
@@ -152,6 +154,8 @@ public class WorldController {
                     }
                 }
             }*/
+
+            System.out.println("g");
             model.play(now - previous, stage.getWidth(), stage.getHeight());
 
             view.updateView();
