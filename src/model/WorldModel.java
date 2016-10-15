@@ -55,9 +55,11 @@ public class WorldModel {
                 if (player1.onTopOfPlayer(player2) && player1.getDy() > player2.getDy()) {
                     player1.addScore(1);
                     player1.jump(1000);
+                    player2.attack(1000);
                 } else if (player2.onTopOfPlayer(player1) && player2.getDy() > player1.getDy()) {
                     player2.addScore(1);
                     player2.jump(1000);
+                    player1.attack(1000);
                 }
             }
         }

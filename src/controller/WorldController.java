@@ -1,24 +1,22 @@
 package controller;
 
-import java.io.IOException;
-import java.util.Optional;
-import javafx.application.Platform;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.ButtonType;
+import file.File;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert;
-import model.AI;
-import model.MenuModel;
-import model.Player;
-import model.WorldModel;
+import model.*;
 import view.MenuView;
 import view.WorldView;
-import model.HighScoreList;
-import file.File;
+
+import java.io.IOException;
+import java.util.Optional;
+import java.util.Random;
 
 /**
  * Created by timothy on 2016-10-11.
@@ -134,38 +132,14 @@ public class WorldController {
 
     private class UpdateTimer extends AnimationTimer {
         private long previous = 0;
+        private Scene myScene = stage.getScene();
 
         @Override
         public void handle(long now) {
-            /*Player p1 = model.getPlayer1();
-            Player p2 = model.getPlayer2();
 
-            model.timeLeft = (int)(endTime - System.currentTimeMillis());
+            if(myScene != stage.getScene())
+                stop();
 
-            for (Player p : model.getPlayers()) {
-                p.move(now - previous);
-                p.gravity(now - previous);
-                p.constrain(stage.getWidth(), stage.getHeight());
-                if (p instanceof AI)
-                    ((AI) p).think();
-            }
-
-            if (Math.abs(p1.getX() - p2.getX()) < 16
-                    && Math.abs(p1.getY() - p2.getY()) < 32) {
-                double p1Speed = p1.getSpeed();
-                double p2Speed = p2.getSpeed();
-                if (p1Speed > 10 || p2Speed > 10) {
-                    if (p1.onTopOfPlayer(p2) && p1.getDy() > p2.getDy()) {
-                        p1.addScore(1);
-                        p1.jump(1000);
-                    } else if (p2.onTopOfPlayer(p1) && p2.getDy() > p1.getDy()) {
-                        p2.addScore(1);
-                        p2.jump(1000);
-                    }
-                }
-            }*/
-
-            System.out.println("g");
             model.play(now - previous, stage.getWidth(), stage.getHeight());
 
             if (model.timeLeft <= 0) {
@@ -181,11 +155,11 @@ public class WorldController {
                                 HighScoreList.getInstance().add(name.get(), model.getPlayer1().getScore());
                                 try {
                                     File.writeObject("highscorelist",
-                                                     HighScoreList.getInstance());
+                                            HighScoreList.getInstance());
                                 } catch (IOException e) {
                                     Alert a = new Alert(Alert.AlertType.WARNING,
-                                                        "Could not write to file.",
-                                                        ButtonType.OK);
+                                            "Could not write to file.",
+                                            ButtonType.OK);
                                     a.showAndWait();
                                 }
                             }
