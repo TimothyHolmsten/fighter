@@ -53,7 +53,7 @@ public class WorldView extends BorderPane {
         anchorPane.setTopAnchor(p2ScoreLabel, 20.0);
         anchorPane.getChildren().add(p2ScoreLabel);
 
-        FighterMenuBar fmb = new FighterMenuBar(stage, true);
+        FighterMenuBar fmb = new FighterMenuBar(stage, true, model);
         setTop(fmb);
 
         player1 = new ImageView();

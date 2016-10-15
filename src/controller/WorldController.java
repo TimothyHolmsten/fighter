@@ -140,8 +140,6 @@ public class WorldController {
             if(myScene != stage.getScene())
                 stop();
 
-            model.play(now - previous, stage.getWidth(), stage.getHeight());
-
             if (model.timeLeft <= 0) {
                 stop();
                 if (model.getPlayer2() instanceof AI) {
@@ -175,7 +173,7 @@ public class WorldController {
                 }
                 return;
             }
-
+            model.play(now - previous, stage.getWidth(), stage.getHeight());
             view.updateView();
 
             previous = now;

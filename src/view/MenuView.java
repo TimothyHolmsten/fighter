@@ -32,7 +32,7 @@ public class MenuView extends BorderPane {
         gridPane.setAlignment(Pos.CENTER);
         setCenter(gridPane);
 
-        setTop(new FighterMenuBar(stage, false));
+        setTop(new FighterMenuBar(stage, false, null));
 
         pvpButton = new Button("Player vs Player");
         pvAiButton = new Button("Player vs AI");

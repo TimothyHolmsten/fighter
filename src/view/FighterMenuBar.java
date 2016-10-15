@@ -13,17 +13,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.*;
 
 import java.util.ArrayList;
-import model.AI;
-import model.Player;
-import model.WorldModel;
-import model.HighScoreList;
-import model.HighScoreEntry;
-import file.File;
 
 public class FighterMenuBar extends MenuBar {
-    public FighterMenuBar(Stage stage, boolean showPause) {
+
+    public FighterMenuBar(Stage stage, boolean showPause, WorldModel worldModel) {
 
         Menu gameMenu = new Menu("Game");
 
@@ -52,12 +48,25 @@ public class FighterMenuBar extends MenuBar {
             }
         });
         MenuItem MIPause = new MenuItem("Pause");
+        MIPause.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (worldModel.getState() == State.RUNNING) {
+                    worldModel.setState(State.PAUSED);
+                    MIPause.setText("Resume");
+                }
+                else {
+                    worldModel.setState(State.RUNNING);
+                    MIPause.setText("Pause");
+                }
+            }
+        });
         MenuItem MIHighscore = new MenuItem("Show highscore");
         MIHighscore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 ArrayList<HighScoreEntry> list
-                    = HighScoreList.getInstance().getList();
+                        = HighScoreList.getInstance().getList();
                 Stage stage = new Stage();
                 stage.setTitle("Highscore");
                 GridPane root = new GridPane();
