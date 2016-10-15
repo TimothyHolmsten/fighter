@@ -36,35 +36,7 @@ public class WorldModel {
     }
 
     public void play(long time, double boxX, double boxY) {
-        /*
-        Player p1 = model.getPlayer1();
-        Player p2 = model.getPlayer2();
 
-        model.timeLeft = (int)(endTime - System.currentTimeMillis());
-
-        for (Player p : model.getPlayers()) {
-            p.move(now - previous);
-            p.gravity(now - previous);
-            p.constrain(stage.getWidth(), stage.getHeight());
-            if (p instanceof AI)
-                ((AI) p).think();
-        }
-
-        if (Math.abs(p1.getX() - p2.getX()) < 16
-                && Math.abs(p1.getY() - p2.getY()) < 32) {
-            double p1Speed = p1.getSpeed();
-            double p2Speed = p2.getSpeed();
-            if (p1Speed > 10 || p2Speed > 10) {
-                if (p1.onTopOfPlayer(p2) && p1.getDy() > p2.getDy()) {
-                    p1.addScore(1);
-                    p1.jump(1000);
-                } else if (p2.onTopOfPlayer(p1) && p2.getDy() > p1.getDy()) {
-                    p2.addScore(1);
-                    p2.jump(1000);
-                }
-            }
-        }
-        */
         timeLeft = (int) (endTime - System.currentTimeMillis());
 
         for (Player p : getPlayers()) {

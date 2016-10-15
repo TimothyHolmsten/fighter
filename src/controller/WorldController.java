@@ -38,6 +38,8 @@ public class WorldController {
         this.view = view;
         this.stage = stage;
         this.scene = scene;
+        endTime = System.currentTimeMillis() + 60 * 1000;
+        model.timeLeft = (int) (endTime - System.currentTimeMillis());
 
         addEventHandlers();
         updateTimer = new UpdateTimer();
@@ -120,6 +122,8 @@ public class WorldController {
     }
 
     private void handleEscEvent() {
+        updateTimer.stop();
+
         MenuModel mModel = new MenuModel();
         MenuView mView = new MenuView(stage, mModel);
         scene = new Scene(mView);
