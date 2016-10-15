@@ -1,16 +1,24 @@
 package controller;
 
+import java.io.IOException;
+import java.util.Optional;
+import javafx.application.Platform;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.ButtonType;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
 import model.AI;
 import model.MenuModel;
 import model.Player;
 import model.WorldModel;
 import view.MenuView;
 import view.WorldView;
+import model.HighscoreList;
+import file.File;
 
 /**
  * Created by timothy on 2016-10-11.
@@ -129,6 +137,38 @@ public class WorldController {
             Player p2 = model.getPlayer2();
 
             model.timeLeft = (int)(endTime - System.currentTimeMillis());
+            if (model.timeLeft <= 0) {
+                stop();
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextInputDialog tid = new TextInputDialog();
+                        tid.setContentText("Enter your name:");
+                        Optional<String> name = tid.showAndWait();
+                        if (name.isPresent()) {
+                            HighscoreList.getInstance().add(name.get(),
+                                                            p1.getScore());
+                            try {
+                                File.writeObject("highscorelist",
+                                                 HighscoreList.getInstance());
+                            } catch (IOException e) {
+                                Alert a = new Alert(Alert.AlertType.WARNING,
+                                                    "Could not write to file.",
+                                                    ButtonType.OK);
+                                a.showAndWait();
+                            }
+                        }
+
+                        MenuModel mModel = new MenuModel();
+                        MenuView mView = new MenuView(stage, mModel);
+                        scene = new Scene(mView);
+                        stage.setScene(scene);
+                        MenuController menuController = new MenuController(stage, scene, mModel, mView);
+                        mView.addEventHandlers(menuController);
+                    }
+                });
+                return;
+            }
 
             for (Player p : model.getPlayers()) {
                 p.move(now - previous);

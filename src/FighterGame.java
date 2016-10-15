@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import model.MenuModel;
 import view.MenuView;
 import model.HighscoreList;
+import file.File;
 
 public class FighterGame extends Application {
 

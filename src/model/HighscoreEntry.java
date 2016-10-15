@@ -1,6 +1,9 @@
 package model;
 
-public class HighscoreEntry implements Comparable<HighscoreEntry> {
+import java.io.Serializable;
+
+public class HighscoreEntry
+    implements Comparable<HighscoreEntry>, Serializable {
     public String name;
     public int score;
 

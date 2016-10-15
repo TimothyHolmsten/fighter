@@ -13,13 +13,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.scene.control.TextInputDialog;
 import java.util.ArrayList;
 import model.AI;
 import model.Player;
 import model.WorldModel;
 import model.HighscoreList;
 import model.HighscoreEntry;
+import file.File;
 
 public class FighterMenuBar extends MenuBar {
     public FighterMenuBar(Stage stage, boolean showPause) {

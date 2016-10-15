@@ -2,8 +2,9 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.io.Serializable;
 
-public class HighscoreList {
+public class HighscoreList implements Serializable {
     ArrayList<HighscoreEntry> list;
     static HighscoreList instance;
 
