@@ -9,8 +9,8 @@ import java.util.Collections;
  * a highscore list. It has a list of {@link HighScoreEntry} objects.
  */
 public class HighScoreList implements Serializable {
-    ArrayList<HighScoreEntry> list;
-    static HighScoreList instance;
+    private ArrayList<HighScoreEntry> list;
+    private static HighScoreList instance;
 
     /**
      * Creates a new {@link HighScoreEntry} and adds it to the list.
