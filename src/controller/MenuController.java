@@ -14,15 +14,12 @@ import view.WorldView;
  */
 public class MenuController {
 
-    private final MenuModel model;
     private final MenuView view;
     private final Stage stage;
     private Scene scene;
 
-    public MenuController(Stage stage, Scene scene,
-                          MenuModel model, MenuView view) {
+    public MenuController(Stage stage, Scene scene, MenuView view) {
 
-        this.model = model;
         this.view = view;
         this.stage = stage;
         this.scene = scene;

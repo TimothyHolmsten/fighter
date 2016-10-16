@@ -20,10 +20,9 @@ public class FighterGame extends Application {
     @Override
     public void start(Stage primaryStage) {
         MenuModel menuModel = new MenuModel();
-        MenuView menuView = new MenuView(primaryStage, menuModel);
+        MenuView menuView = new MenuView(primaryStage);
         Scene scene = new Scene(menuView);
-        MenuController menuController = new MenuController(primaryStage, scene,
-                menuModel, menuView);
+        MenuController menuController = new MenuController(primaryStage, scene, menuView);
         menuView.addEventHandlers(menuController);
 
         primaryStage.setScene(scene);

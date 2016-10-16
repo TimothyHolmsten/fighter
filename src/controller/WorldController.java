@@ -120,11 +120,10 @@ public class WorldController {
     private void handleEscEvent() {
         updateTimer.stop();
 
-        MenuModel mModel = new MenuModel();
-        MenuView mView = new MenuView(stage, mModel);
+        MenuView mView = new MenuView(stage);
         scene = new Scene(mView);
         stage.setScene(scene);
-        MenuController menuController = new MenuController(stage, scene, mModel, mView);
+        MenuController menuController = new MenuController(stage, scene, mView);
         mView.addEventHandlers(menuController);
     }
 
@@ -160,11 +159,10 @@ public class WorldController {
                                 }
                             }
 
-                            MenuModel mModel = new MenuModel();
-                            MenuView mView = new MenuView(stage, mModel);
+                            MenuView mView = new MenuView(stage);
                             scene = new Scene(mView);
                             stage.setScene(scene);
-                            MenuController menuController = new MenuController(stage, scene, mModel, mView);
+                            MenuController menuController = new MenuController(stage, scene, mView);
                             mView.addEventHandlers(menuController);
                         }
                     });

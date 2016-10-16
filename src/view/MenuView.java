@@ -14,13 +14,11 @@ import model.MenuModel;
  * Created by timothy on 2016-10-11.
  */
 public class MenuView extends BorderPane {
-    private final MenuModel model;
     private GridPane gridPane;
     private Button pvpButton, pvAiButton, exitButton;
     private Stage stage;
 
-    public MenuView(Stage stage, MenuModel model) {
-        this.model = model;
+    public MenuView(Stage stage) {
         this.stage = stage;
         initView();
     }
