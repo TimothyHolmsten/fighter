@@ -3,7 +3,6 @@ package controller;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.AI;
-import model.MenuModel;
 import model.Player;
 import model.WorldModel;
 import view.MenuView;
