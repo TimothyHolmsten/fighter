@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.HighScoreList;
-import model.MenuModel;
 import view.MenuView;
 
 public class FighterGame extends Application {
@@ -19,7 +18,6 @@ public class FighterGame extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        MenuModel menuModel = new MenuModel();
         MenuView menuView = new MenuView(primaryStage);
         Scene scene = new Scene(menuView);
         MenuController menuController = new MenuController(primaryStage, scene, menuView);
