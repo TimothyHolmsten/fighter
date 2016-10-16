@@ -23,12 +23,13 @@ public class HighScoreEntry
     /**
      * Compares the score of this to the score of another highscore
      * entry.
+     *
      * @param other the other highscore entry
      * @return &lt;0 if this is less than other, 0 if they are equal
      * and &gt;0 if this is greater than other
      */
     @Override
     public int compareTo(HighScoreEntry other) {
-        return ((Integer)score).compareTo(other.score);
+        return ((Integer) score).compareTo(other.score);
     }
 }

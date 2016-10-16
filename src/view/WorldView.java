@@ -75,7 +75,7 @@ public class WorldView extends BorderPane {
         Player p1 = model.getPlayer1();
         Player p2 = model.getPlayer2();
 
-        timeLabel.textProperty().setValue(Integer.toString(model.timeLeft / 1000));
+        timeLabel.textProperty().setValue(Integer.toString(model.getTimeLeft() / 1000));
 
         player1.setX(p1.getX());
         player1.setY(p1.getY());

@@ -25,7 +25,6 @@ public class WorldController {
     private final WorldView view;
     private final Stage stage;
     private Scene scene;
-    private long endTime;
     private final UpdateTimer updateTimer;
 
     public WorldController(Stage stage, Scene scene,
@@ -35,8 +34,6 @@ public class WorldController {
         this.view = view;
         this.stage = stage;
         this.scene = scene;
-        endTime = System.currentTimeMillis() + 60 * 1000;
-        model.timeLeft = (int) (endTime - System.currentTimeMillis());
 
         addEventHandlers();
         updateTimer = new UpdateTimer();
@@ -116,7 +113,6 @@ public class WorldController {
                             break;
 
                     }
-
             }
         });
     }
@@ -142,7 +138,7 @@ public class WorldController {
             if (myScene != stage.getScene())
                 stop();
 
-            if (model.timeLeft <= 0) {
+            if (model.getTimeLeft() <= 0) {
                 stop();
                 if (model.getPlayer2() instanceof AI) {
                     Platform.runLater(new Runnable() {

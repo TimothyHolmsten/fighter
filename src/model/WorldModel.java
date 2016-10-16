@@ -7,9 +7,10 @@ import java.util.ArrayList;
  * method should be called every frame.
  */
 public class WorldModel {
-    /** The time left until the game ends. */
-    public int timeLeft;
-
+    /**
+     * The time left until the game ends.
+     */
+    private int timeLeft;
     private Player player1;
     private Player player2;
     private long endTime;
@@ -18,6 +19,7 @@ public class WorldModel {
     /**
      * Constructs a new world model containing the two specified
      * players.
+     *
      * @param player1 the first player
      * @param player2 the second player
      */
@@ -31,6 +33,7 @@ public class WorldModel {
 
     /**
      * Returns the first player.
+     *
      * @return the first player
      */
     public Player getPlayer1() {
@@ -39,6 +42,7 @@ public class WorldModel {
 
     /**
      * Returns the second player.
+     *
      * @return the second player
      */
     public Player getPlayer2() {
@@ -47,6 +51,7 @@ public class WorldModel {
 
     /**
      * Returns a list of all players.
+     *
      * @return a list of all players
      */
     public ArrayList<Player> getPlayers() {
@@ -59,6 +64,7 @@ public class WorldModel {
 
     /**
      * Returns the state of the game.
+     *
      * @return the state of the game
      */
     public State getState() {
@@ -67,6 +73,7 @@ public class WorldModel {
 
     /**
      * Sets the state of the game.
+     *
      * @param state the new state of the game
      */
     public void setState(State state) {
@@ -75,8 +82,9 @@ public class WorldModel {
 
     /**
      * Updates the game. This method should be called every frame.
+     *
      * @param time the elapsed time since the last time this method
-     * was called
+     *             was called
      * @param boxX the width of the game world
      * @param boxY the height of the game world
      */
@@ -111,5 +119,9 @@ public class WorldModel {
         } else {
             endTime = System.currentTimeMillis() + timeLeft;
         }
+    }
+
+    public int getTimeLeft() {
+        return timeLeft;
     }
 }

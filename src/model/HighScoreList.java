@@ -14,7 +14,8 @@ public class HighScoreList implements Serializable {
 
     /**
      * Creates a new {@link HighScoreEntry} and adds it to the list.
-     * @param name the name of the highscore entry
+     *
+     * @param name  the name of the highscore entry
      * @param score the score of the highscore entry
      */
     public void add(String name, int score) {
@@ -30,6 +31,7 @@ public class HighScoreList implements Serializable {
 
     /**
      * Returns the list of highscore entries.
+     *
      * @return the list of highscore entries
      */
     public ArrayList<HighScoreEntry> getList() {
@@ -39,6 +41,7 @@ public class HighScoreList implements Serializable {
     /**
      * Returns the instance of this class. Creates a new instance if
      * there is no instance.
+     *
      * @return the instance of this class
      */
     public static HighScoreList getInstance() {
@@ -50,8 +53,9 @@ public class HighScoreList implements Serializable {
 
     /**
      * Sets the instance.
+     *
      * @param newInstance the new instance that will replace the old
-     * one (if one exists)
+     *                    one (if one exists)
      */
     public static void setInstance(HighScoreList newInstance) {
         instance = newInstance;

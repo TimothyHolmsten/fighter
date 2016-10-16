@@ -13,9 +13,10 @@ public class Player {
 
     /**
      * Creates a new player with specified position and size.
-     * @param x x position of the player
-     * @param y y position of the player
-     * @param width the width of the player
+     *
+     * @param x      x position of the player
+     * @param y      y position of the player
+     * @param width  the width of the player
      * @param height the height of the player
      */
     public Player(double x, double y, double width, double height) {
@@ -27,6 +28,7 @@ public class Player {
 
     /**
      * Sets the player's walking speed.
+     *
      * @param speed the speed that the player will walk at
      */
     public void walk(double speed) {
@@ -35,6 +37,7 @@ public class Player {
 
     /**
      * Makes the player jump at the specified speed.
+     *
      * @param speed the upward speed that the player will jump at
      */
     public void jump(double speed) {
@@ -48,6 +51,7 @@ public class Player {
     /**
      * Makes the player dive down with the specified attack power. No
      * more than two attacks per second can be performed.
+     *
      * @param attackPower the dive speed
      */
     public void attack(double attackPower) {
@@ -59,6 +63,7 @@ public class Player {
 
     /**
      * Returns the x position of the player.
+     *
      * @return the x position of the player
      */
     public double getX() {
@@ -67,6 +72,7 @@ public class Player {
 
     /**
      * Returns the y position of the player.
+     *
      * @return the y position of the player
      */
     public double getY() {
@@ -75,6 +81,7 @@ public class Player {
 
     /**
      * Returns the y speed of the player.
+     *
      * @return the y speed of the player
      */
     public double getDy() {
@@ -83,6 +90,7 @@ public class Player {
 
     /**
      * Returns the x speed of the player.
+     *
      * @return the x speed of the player
      */
     public double getDx() {
@@ -91,6 +99,7 @@ public class Player {
 
     /**
      * Returns the total speed of the player.
+     *
      * @return the total speed of the player
      */
     public double getSpeed() {
@@ -99,8 +108,9 @@ public class Player {
 
     /**
      * Moves the player based on its velocity.
+     *
      * @param elapsedTimeNs the time in nanoseconds since last time
-     * this method was called
+     *                      this method was called
      */
     public void move(long elapsedTimeNs) {
         x += dx * elapsedTimeNs / 1_000_000_000.0;
@@ -109,8 +119,9 @@ public class Player {
 
     /**
      * Increase the downward speed of the player.
+     *
      * @param elapsedTimeNs the time in nanoseconds since last time
-     * this method was called
+     *                      this method was called
      */
     public void gravity(long elapsedTimeNs) {
         dy += 900 * elapsedTimeNs / 1_000_000_000.0;
@@ -119,6 +130,7 @@ public class Player {
     /**
      * Makes sure the player is inside a box with the specified width
      * and height.
+     *
      * @param boxX the width of the box
      * @param boxY the height of the box
      */
@@ -136,6 +148,7 @@ public class Player {
 
     /**
      * Checks whether the player is on top of the other player.
+     *
      * @param otherPlayer the other player
      * @return true if the player is on top of the other player,
      * otherwise false
@@ -151,6 +164,7 @@ public class Player {
 
     /**
      * Returns the width of the player.
+     *
      * @return the width of the player
      */
     public double getWidth() {
@@ -159,6 +173,7 @@ public class Player {
 
     /**
      * Returns the height of the player.
+     *
      * @return the height of the player
      */
     public double getHeight() {
@@ -167,6 +182,7 @@ public class Player {
 
     /**
      * Increases the player's score.
+     *
      * @param score the score to add
      */
     public void addScore(int score) {
@@ -175,6 +191,7 @@ public class Player {
 
     /**
      * Returns the player's score.
+     *
      * @return the player's score
      */
     public int getScore() {
