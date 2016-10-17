@@ -57,13 +57,13 @@ public class WorldView extends BorderPane {
         setTop(fmb);
 
         player1 = new ImageView();
-        Image p1img = new Image("file:images/player1.png", 32, 32, true, false);
+        Image p1img = new Image("images/player1.png", 32, 32, true, false);
         player1.setImage(p1img);
         player1.setX(model.getPlayer1().getX());
         player1.setY(model.getPlayer1().getY());
 
         player2 = new ImageView();
-        Image p2img = new Image("file:images/player2.png", 32, 32, true, false);
+        Image p2img = new Image("images/player2.png", 32, 32, true, false);
         player2.setImage(p2img);
         player2.setX(model.getPlayer2().getX());
         player2.setY(model.getPlayer2().getY());
